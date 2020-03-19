@@ -5,6 +5,7 @@ import io.pivotal.pal.tracker.TimeEntryController;
 import io.pivotal.pal.tracker.TimeEntryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -108,7 +109,7 @@ public class TimeEntryControllerTest {
 
     @Test
     public void testUpdate_NotFound() {
-        long nonExistentTimeEntryId = 1L;
+        long nonExistentTimeEntryId = -1L;
         doReturn(null)
             .when(timeEntryRepository)
             .update(eq(nonExistentTimeEntryId), any(TimeEntry.class));
